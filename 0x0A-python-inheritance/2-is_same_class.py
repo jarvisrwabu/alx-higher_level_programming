@@ -9,7 +9,7 @@ def is_same_class(obj, a_class):
         obj (object): Object to check.
         a_class (type): The class to verify object
     """
-    while (a_class != object):
+    if a_class != object:
         if isinstance(obj, a_class):
             return True
         else:
