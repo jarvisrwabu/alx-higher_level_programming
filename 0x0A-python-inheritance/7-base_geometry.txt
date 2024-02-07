@@ -1,0 +1,39 @@
+===========================
+How to Use 7-base_geometry.py
+===========================
+
+This module defines an integer validator function ``integer_validator(name, value):``.
+
+Usage
+=====
+
+``integer_validator(...)``` Verifies if the parameter input is an integer with the specified conditions, the name is assumed
+to always be a string
+
+::
+
+    >>> integer_validator = __import__('7-base_geometry').integer_validator
+    >>> integer_validator("Wes", 33) #Valid input
+    
+If Negative numbers are put as parameter value, it raises a ValueError
+
+::
+
+    >>> integer_validator("Man", -3)
+    Traceback (most recent call last):
+    ValueError: Man must be an integer
+
+0 also raises a ValueError if put as a parameter value
+::
+
+    >>> integer_validator("Pop", 0)
+    Traceback (most recent call last):
+    ValueError: Pop must be an integer
+
+
+Other types other than int will raise a TypeError 
+::
+
+    >>> integer_validator("Man", 0.2) # Example using a float
+    Traceback (most recent call last):
+    ValueError: Man must be an integer
