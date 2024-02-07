@@ -1,18 +1,17 @@
 #!/usr/bin/python3
-"""Create a new BaseClass."""
+"""Inherited Class."""
 
 
 class BaseGeometry:
-    """BaseClass to be inherited."""
-
-    def integer_validator(self, name, value):
-        """Validate integer."""
-        if not isinstance(value, int):
-            raise TypeError("{} must be an integer".format(self.name))
-
-        elif value <= 0:
-            raise ValueError("{} must be greater than 0".format(self.name))
+    """Blueprint of superclass."""
 
     def area(self):
         """Area not implemented."""
         raise Exception("area() is not implemented")
+
+    def integer_validator(self, name, value):
+        """Validate input."""
+        if type(value) is not int:
+            raise TypeError("{:s} must be an integer".format(name))
+        if value <= 0:
+            raise ValueError("{:s} must be greater than 0".format(name))
