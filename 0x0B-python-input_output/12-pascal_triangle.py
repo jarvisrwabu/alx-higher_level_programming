@@ -10,8 +10,10 @@ def coefficient(n, k):
     return coefficient(n - 1, k) + coefficient(n - 1, k - 1)
 
 
-def pascal(n):
+def pascal_triangle(n):
     """Return n rows of Pascal's Triangle."""
+    if n <= 0:
+        return []
     triangle = []
     for i in range(n):
         row = []
