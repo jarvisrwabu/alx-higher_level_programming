@@ -1,39 +1,95 @@
-===========================
-How to Use 7-base_geometry.py
-===========================
+# run test with python3 -m doctest -v ./tests/[filename].txt
 
-This module defines an integer validator function ``integer_validator(name, value):``.
+First import method to test
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
-Usage
-=====
+SUCCESS CASES:
 
-``integer_validator(...)``` Verifies if the parameter input is an integer with the specified conditions, the name is assumed
-to always be a string
+Test ints greater than 0 (shouldn't raise error or return anything):
+     >>> bg = BaseGeometry()
+     >>> bg.integer_validator("checkme", 999)
 
-::
+FAIL CASES:
 
-    >>> integer_validator = __import__('7-base_geometry').integer_validator
-    >>> integer_validator("Wes", 33) #Valid input
-    
-If Negative numbers are put as parameter value, it raises a ValueError
+Test non-implemented area method
+     >>> bg = BaseGeometry()
+     >>> bg.area()
+     Traceback (most recent call last):
+     ...
+     Exception: area() is not implemented
 
-::
+Test ints less than or equal to 0:
+     >>> bg = BaseGeometry()
+     >>> bg.integer_validator("checkme", 0)
+     Traceback (most recent call last):
+     ...
+     ValueError: checkme must be greater than 0
 
-    >>> integer_validator("Man", -3)
-    Traceback (most recent call last):
-    ValueError: Man must be an integer
+     >>> bg = BaseGeometry()
+     >>> bg.integer_validator("checkme", -999)
+     Traceback (most recent call last):
+     ...
+     ValueError: checkme must be greater than 0
 
-0 also raises a ValueError if put as a parameter value
-::
+Test non-ints:
 
-    >>> integer_validator("Pop", 0)
-    Traceback (most recent call last):
-    ValueError: Pop must be an integer
+     >>> bg = BaseGeometry()
+     >>> bg.integer_validator("checkme", None)
+     Traceback (most recent call last):
+     ...
+     TypeError: checkme must be an integer
 
+     >>> bg = BaseGeometry()
+     >>> bg.integer_validator("checkme", "hello!")
+     Traceback (most recent call last):
+     ...
+     TypeError: checkme must be an integer
 
-Other types other than int will raise a TypeError 
-::
+     >>> bg = BaseGeometry()
+     >>> bg.integer_validator("checkme", "50")
+     Traceback (most recent call last):
+     ...
+     TypeError: checkme must be an integer
 
-    >>> integer_validator("Man", 0.2) # Example using a float
-    Traceback (most recent call last):
-    ValueError: Man must be an integer
+     >>> bg = BaseGeometry()
+     >>> bg.integer_validator("checkme", [1, 2, 3])
+     Traceback (most recent call last):
+     ...
+     TypeError: checkme must be an integer
+
+     >>> bg = BaseGeometry()
+     >>> bg.integer_validator("checkme", (1, 2, 3))
+     Traceback (most recent call last):
+     ...
+     TypeError: checkme must be an integer
+
+     >>> bg = BaseGeometry()
+     >>> bg.integer_validator("checkme", {"key": 1})
+     Traceback (most recent call last):
+     ...
+     TypeError: checkme must be an integer
+
+     >>> bg = BaseGeometry()
+     >>> bg.integer_validator("age", True)
+     Traceback (most recent call last):
+     ...
+     TypeError: age must be an integer
+
+     >>> bg = BaseGeometry()
+     >>> bg.integer_validator("checkme", {3, 4})
+     Traceback (most recent call last):
+     ...
+     TypeError: checkme must be an integer
+
+Test invalid number of arguments:
+     >>> bg = BaseGeometry()
+     >>> bg.integer_validator()
+     Traceback (most recent call last):
+     ...
+     TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+     >>> bg = BaseGeometry()
+     >>> bg.integer_validator("age")
+     Traceback (most recent call last):
+     ...
+     TypeError: integer_validator() missing 1 required positional argument: 'value'
