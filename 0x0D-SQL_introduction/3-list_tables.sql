@@ -1,3 +1,3 @@
 -- Show tables in the database
-USE mysql;
+USE @@argv
 SHOW TABLES;
