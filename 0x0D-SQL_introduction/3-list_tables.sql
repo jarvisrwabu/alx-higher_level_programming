@@ -1,3 +1,3 @@
 -- Show tables in the database
-USE @@argv
+USE @argv
 SHOW TABLES;
