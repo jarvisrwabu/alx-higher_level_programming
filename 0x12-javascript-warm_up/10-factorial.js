@@ -10,4 +10,4 @@ function factorial (num) {
   }
 }
 
-console.log(factorial(argv[2]));
+console.log(factorial(Number(argv[2])));
