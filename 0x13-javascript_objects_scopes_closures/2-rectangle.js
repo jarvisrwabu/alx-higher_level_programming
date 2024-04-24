@@ -1,11 +1,11 @@
 #!/usr/bin/node
 module.exports = class Rectangle {
   constructor (w, h) {
-    this.width = w;
-    this.height = h;
-
-    if (self.width <= 0 || self.height <= 0 ) {
+    if (w <= 0 || h <= 0) {
       const Rectangle = {};
+    } else {
+      this.width = w;
+      this.height = h;
     }
   }
-}
+};
