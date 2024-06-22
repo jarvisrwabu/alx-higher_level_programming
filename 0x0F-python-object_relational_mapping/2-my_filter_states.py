@@ -16,8 +16,8 @@ if __name__ == "__main__":
 
     # create cursor to exec queries using SQL; filter names starting with 'N'
     cursor = db.cursor()
-    query = "SELECT * FROM states WHERE name LIKE %s "
-    cursor.execute(query, (argv[4], ))
+    query = """SELECT * FROM states WHERE name LIKE '{:s}'""".format(argv[4])
+    cursor.execute(query)
     for row in cursor.fetchall():
         print(row)
     cursor.close()
