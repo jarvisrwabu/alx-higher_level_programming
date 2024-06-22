@@ -14,9 +14,7 @@ cursor = db.cursor()
 cursor.execute("SELECT * FROM states ORDER BY id")
 rows = cursor.fetchall()
 for row in rows:
-    for col in row:
-        print("%s," % col)
-    print("\n")
+    print(row)
 
 cursor.close()
 db.close()
